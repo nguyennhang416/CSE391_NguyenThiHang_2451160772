@@ -267,4 +267,4 @@ Tuy nhiên, <div> vẫn rất quan trọng.
 Nó phù hợp để tạo layout phức tạp (grid, flexbox), wrapper styling, hoặc nhóm các phần tử chỉ phục vụ mục đích trình bày mà không mang ý nghĩa ngữ nghĩa cụ thể.
 Tóm lại, semantic HTML không phải để thay thế <div>, mà là để chúng ta sử dụng đúng thẻ cho đúng mục đích, giúp code chuyên nghiệp, bền vững và thân thiện hơn với cả người dùng lẫn máy móc.
 
-Link video PBT_01: https://drive.google.com/drive/folders/13YXA7yOH1G7f5FKDsVbiztvKXky96cre
+Phần D: Link video PBT_01: https://drive.google.com/drive/folders/13YXA7yOH1G7f5FKDsVbiztvKXky96cre
