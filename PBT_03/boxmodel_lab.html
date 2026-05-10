@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Box Model Lab - content-box vs border-box</title>
+    <link rel="stylesheet" href="boxmodel.css">
+</head>
+<body>
+    <header>
+        <h1>Box Model Lab</h1>
+        <p>Chứng minh sự khác biệt giữa content-box vs border-box</p>
+    </header>
+
+    <main>
+        <section class="part-1">
+            <h2>Phần 1 — content-box vs border-box</h2>
+            <p>Cả 2 hộp đều có: width: 300px | padding: 20px | border: 5px solid</p>
+            
+            <div class="demo-container">
+                <div class="box box-content">
+                    <h3>Hộp 1: content-box</h3>
+                    <p>width: 300px</p>
+                    <p>padding: 20px</p>
+                    <p>border: 5px solid</p>
+                    <p style="color: red; font-weight: bold;">
+                        Chiều rộng thực tế (border-to-border) = ?
+                    </p>
+                </div>
+
+                <div class="box box-border">
+                    <h3>Hộp 2: border-box</h3>
+                    <p>width: 300px</p>
+                    <p>padding: 20px</p>
+                    <p>border: 5px solid</p>
+                    <p style="color: green; font-weight: bold;">
+                        Chiều rộng thực tế (border-to-border) = 300px
+                    </p>
+                </div>
+            </div>
+
+            <div class="instructions">
+                <h4>Hướng dẫn đo đạc:</h4>
+                <ol>
+                    <li>Mở DevTools (F12)</li>
+                    <li>Chọn inspector tool</li>
+                    <li>Click vào Hộp 1, xem tab "Computed" → cuộn tới "box-sizing" và xem Box Model diagram</li>
+                    <li>Ghi lại chiều rộng thực tế (content + padding + border)</li>
+                    <li>Lặp lại cho Hộp 2</li>
+                    <li>Chụp 2 screenshot DevTools cho mỗi hộp</li>
+                </ol>
+            </div>
+        </section>
+
+        <section class="part-2">
+            <h2>Phần 2 — Layout 3 cột</h2>
+            <p>Container: 1000px</p>
+
+            <h3>Variant 1: KHÔNG dùng border-box (Lỗi layout)</h3>
+            <div class="container-no-border-box">
+                <div class="col col-left-nb">
+                    <h4>Cột trái (sidebar)</h4>
+                    <p>width: 250px</p>
+                    <p>padding: 15px</p>
+                    <p class="calc">Thực tế: 250 + 30 = 280px</p>
+                </div>
+                <div class="col col-middle-nb">
+                    <h4>Cột giữa (content)</h4>
+                    <p>width: 500px</p>
+                    <p>padding: 20px</p>
+                    <p class="calc">Thực tế: 500 + 40 = 540px</p>
+                </div>
+                <div class="col col-right-nb">
+                    <h4>Cột phải (ads)</h4>
+                    <p>width: 250px</p>
+                    <p>padding: 15px</p>
+                    <p class="calc">Thực tế: 250 + 30 = 280px</p>
+                </div>
+            </div>
+            <div class="warning">
+                ⚠️ Tổng = 280 + 540 + 280 = 1100px > 1000px → Cột phải bị xuống hàng!
+            </div>
+
+            <h3>Variant 2: Dùng border-box (Đúng)</h3>
+            <div class="container-with-border-box">
+                <div class="col col-left-bb">
+                    <h4>Cột trái (sidebar)</h4>
+                    <p>width: 250px</p>
+                    <p>padding: 15px</p>
+                    <p class="calc">Thực tế: 250px (đã bao gồm padding)</p>
+                </div>
+                <div class="col col-middle-bb">
+                    <h4>Cột giữa (content)</h4>
+                    <p>width: 500px</p>
+                    <p>padding: 20px</p>
+                    <p class="calc">Thực tế: 500px (đã bao gồm padding)</p>
+                </div>
+                <div class="col col-right-bb">
+                    <h4>Cột phải (ads)</h4>
+                    <p>width: 250px</p>
+                    <p>padding: 15px</p>
+                    <p class="calc">Thực tế: 250px (đã bao gồm padding)</p>
+                </div>
+            </div>
+            <div class="success">
+                ✓ Tổng = 250 + 500 + 250 = 1000px → Layout hoàn hảo!
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; CSE391 - Box Model Lab</p>
+    </footer>
+</body>
+</html>
