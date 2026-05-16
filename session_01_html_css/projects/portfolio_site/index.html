@@ -290,5 +290,105 @@
     </div>
 
 </section>   
+<section id="skills" class="skills-section">
+
+    <div class="container">
+
+        <h2>My Skills</h2>
+
+        <div class="skills-grid">
+
+            <!-- HTML -->
+            <div class="skill-item">
+
+                <div class="skill-info">
+                    <span>HTML5</span>
+                    <span>95%</span>
+                </div>
+
+                <div class="skill-bar">
+                    <div
+                        class="skill-progress"
+                        data-width="95%">
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- CSS -->
+            <div class="skill-item">
+
+                <div class="skill-info">
+                    <span>CSS3</span>
+                    <span>90%</span>
+                </div>
+
+                <div class="skill-bar">
+                    <div
+                        class="skill-progress"
+                        data-width="90%">
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- JavaScript -->
+            <div class="skill-item">
+
+                <div class="skill-info">
+                    <span>JavaScript</span>
+                    <span>85%</span>
+                </div>
+
+                <div class="skill-bar">
+                    <div
+                        class="skill-progress"
+                        data-width="85%">
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- React -->
+            <div class="skill-item">
+
+                <div class="skill-info">
+                    <span>React</span>
+                    <span>80%</span>
+                </div>
+
+                <div class="skill-bar">
+                    <div
+                        class="skill-progress"
+                        data-width="80%">
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+<script>
+
+const skillBars =
+    document.querySelectorAll(".skill-progress");
+
+window.addEventListener("load", () => {
+
+    skillBars.forEach(bar => {
+
+        const width =
+            bar.getAttribute("data-width");
+
+        bar.style.width = width;
+
+    });
+
+});
+
+</script>
 </body>
 </html>
