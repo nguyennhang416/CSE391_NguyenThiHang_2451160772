@@ -53,3 +53,10 @@ body {
     }
 
 }
+.badge {
+    font-weight: 500;
+}
+
+.card-header {
+    border-bottom: 1px solid #eee;
+}
