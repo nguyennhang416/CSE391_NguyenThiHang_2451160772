@@ -30,3 +30,20 @@ a{
     margin:auto;
 
 }
+body {
+    font-family: var(--bs-body-font-family);
+    background-color: #f8fafc;
+    color: #334155;
+}
+/* ========================================
+   CUSTOM SPACING
+======================================== */
+
+.py-section {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+}
+
+.gap-4 {
+    gap: 2rem;
+}

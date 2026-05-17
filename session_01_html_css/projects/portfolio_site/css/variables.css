@@ -11,22 +11,3 @@
     --font-main: 'Segoe UI', sans-serif;
 
 }
-/* ========================================
-   CUSTOM THEME VARIABLES
-======================================== */
-
-:root {
-
-    /* PRIMARY COLORS */
-    --bs-primary: #14b8a6;
-    --bs-primary-rgb: 20, 184, 166;
-    --bs-primary-hover: #0d9488;
-
-    /* SECONDARY COLORS */
-    --bs-secondary: #64748b;
-    --bs-secondary-rgb: 100, 116, 139;
-
-    /* TYPOGRAPHY */
-    --bs-body-font-family: 'Inter', sans-serif;
-
-}
