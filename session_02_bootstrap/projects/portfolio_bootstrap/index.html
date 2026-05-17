@@ -26,66 +26,96 @@
     src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js">
 </script>
 <body>
-    <header>
-
-    <div class="logo">Nguyễn Thị Hằng</div>
-
-    <input type="checkbox" id="menu-toggle" class="menu-toggle" />
-
-    <label for="menu-toggle" class="hamburger">
-        <span></span>
-        <span></span>
-        <span></span>
-    </label>
-
-    <nav>
-        <a href="#about">About</a>
-        <a href="#skills">Skills</a>
-        <a href="#portfolio">Portfolio</a>
-        <a href="#contact">Contact</a>
-    </nav>
-
-</header>
-<section class="hero"> 
-    <h1>Hi, I'm Nguyễn Thị Hằng</h1> 
-    <p> Full-Stack Developer | UI Designer | Problem Solver </p> 
-    <a href="#portfolio" class="cta-button"> View My Work </a> 
-</section>
- <section id="about" class="about-section">
+    <nav
+    class="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow-sm"
+>
 
     <div class="container">
 
-        <div class="about-grid">
+        <a
+            class="navbar-brand fw-bold text-primary"
+            href="#"
+        >
+            Nguyễn Thị Hằng
+        </a>
 
-            <!-- Avatar -->
-            <div class="about-image">
+        <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+        >
 
-                <img
-                    src="https://images.unsplash.com/photo-1518791841217-8f162f1e1131?q=80&w=800&auto=format&fit=crop"
-                    alt="Profile Photo"
-                >
+            <span class="navbar-toggler-icon"></span>
 
-            </div>
+        </button>
 
-            <!-- Content -->
-            <div class="about-content">
+        <div
+            class="collapse navbar-collapse"
+            id="navbarNav"
+        >
 
-                <h2>About Me</h2>
+            <ul class="navbar-nav ms-auto">
 
-                <p class="lead">
-                    I'm a passionate developer with 3+ years
-                    of experience building web applications.
-                </p>
+                <li class="nav-item">
+                    <a class="nav-link" href="#about">
+                        About
+                    </a>
+                </li>
 
-                <p>
-                    Specialized in Frontend development with
-                    React and Vue. Also experienced in Backend
-                    with Node.js and Python.
-                </p>
+                <li class="nav-item">
+                    <a class="nav-link" href="#skills">
+                        Skills
+                    </a>
+                </li>
 
-            </div>
+                <li class="nav-item">
+                    <a class="nav-link" href="#portfolio">
+                        Portfolio
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#contact">
+                        Contact
+                    </a>
+                </li>
+
+            </ul>
 
         </div>
+
+    </div>
+
+</nav>
+<section
+    class="hero min-vh-100 d-flex align-items-center justify-content-center text-center text-white"
+>
+
+    <div class="container">
+
+        <h1 class="display-2 fw-bold mb-3">
+
+            Hi, I'm Nguyễn Thị Hằng
+
+        </h1>
+
+        <p class="lead mb-4 opacity-75">
+
+            Full-Stack Developer |
+            UI Designer |
+            Problem Solver
+
+        </p>
+
+        <a
+            href="#portfolio"
+            class="btn btn-light btn-lg px-5 py-3 fw-semibold"
+        >
+
+            View My Work
+
+        </a>
 
     </div>
 
