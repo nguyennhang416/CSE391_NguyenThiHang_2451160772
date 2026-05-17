@@ -119,17 +119,58 @@
 
     </div>
 
-</section>   
+</section>  
+ <section id="about" class="about-section">
+
+    <div class="container">
+
+        <div class="row align-items-center g-5">
+
+            <!-- Avatar -->
+            <div class="col-lg-5 text-center">
+
+                <img
+                    src="https://images.unsplash.com/photo-1518791841217-8f162f1e1131?q=80&w=800&auto=format&fit=crop"
+                    alt="Profile Photo"
+                    class="img-fluid rounded-circle shadow"
+                    style="max-width: 300px;"
+>
+
+            </div>
+
+            <!-- Content -->
+            <div class="col-lg-7">
+
+                <h2>About Me</h2>
+
+                <p class="lead">
+                    I'm a passionate developer with 3+ years
+                    of experience building web applications.
+                </p>
+
+                <p>
+                    Specialized in Frontend development with
+                    React and Vue. Also experienced in Backend
+                    with Node.js and Python.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>    
 <section id="skills" class="skills-section">
 
     <div class="container">
 
         <h2>My Skills</h2>
 
-        <div class="skills-grid">
+        <div class="row g-4">
 
             <!-- HTML -->
-            <div class="skill-item">
+            <div class="col-md-6">
 
                 <div class="skill-info">
                     <span>HTML5</span>
@@ -153,11 +194,13 @@
                     <span>90%</span>
                 </div>
 
-                <div class="skill-bar">
-                    <div
-                        class="skill-progress"
-                        data-width="90%">
-                    </div>
+                <div class="progress" style="height: 12px;">
+
+                        <div
+                            class="progress-bar"
+                            style="width: 95%;"
+                        ></div>
+
                 </div>
 
             </div>
@@ -232,25 +275,30 @@
         </div>
 
         <!-- PORTFOLIO GRID -->
-        <div class="portfolio-grid">
+        <div class="row g-4">
 
             <!-- ITEM 1 -->
-            <div class="portfolio-item">
+            <div class="col-12 col-md-6 col-lg-4">
 
-                <a href="#lightbox-1" class="lightbox-link">
+                <div class="card h-100 shadow-sm border-0 overflow-hidden">
 
                     <img
                         src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1200&auto=format&fit=crop"
+                        class="card-img-top"
                         alt="Project 1"
                     >
 
-                </a>
+                    <div class="card-body">
 
-                <div class="portfolio-overlay">
+                        <h5 class="card-title">
+                            E-Commerce Website
+                        </h5>
 
-                    <h3>E-Commerce Website</h3>
+                        <p class="card-text text-muted">
+                            React + Node.js
+                        </p>
 
-                    <p>React + Node.js</p>
+                    </div>
 
                 </div>
 
