@@ -166,4 +166,165 @@ style.scss → Sass Compile → responsive.css
 
 > Browser không đọc trực tiếp file `.scss`, nên luôn phải compile sang `.css`.
 
+# Câu C1 (10đ) — Phân tích trang web thực (Shopee.vn)
+
+Website được chọn: Shopee Việt Nam
+
+Website:
+
+https://shopee.vn/
+
+---
+
+## 1. Mobile (375px)
+
+### Navigation thay đổi như thế nào?
+
+- Header được tối giản để phù hợp màn hình nhỏ.
+- Navigation ngang trên desktop không còn hiển thị đầy đủ.
+- Thanh tìm kiếm vẫn giữ vai trò trung tâm.
+- Nhiều menu được gom lại thành icon (menu, tài khoản, giỏ hàng, thông báo).
+- Không hiển thị quá nhiều liên kết ngang như desktop.
+
+### Lưới content thay đổi mấy cột?
+
+- Product grid thường hiển thị khoảng **2 cột** trên mobile.
+- Card sản phẩm nhỏ hơn để tận dụng không gian màn hình.
+
+### Elements nào bị ẩn trên mobile?
+
+Một số phần thường bị giảm hoặc ẩn:
+
+- Banner lớn nhiều cột
+- Sidebar navigation
+- Một số menu phụ/header links
+- Một số recommendation panel hoặc promotion section lớn
+
+### Font size có thay đổi không?
+
+Có.
+
+- Font nhỏ hơn desktop.
+- Heading, menu text và product text được giảm kích thước để tối ưu mobile.
+
+---
+
+## 2. Tablet (768px)
+
+### Navigation thay đổi như thế nào?
+
+- Header đầy đủ hơn mobile.
+- Thanh tìm kiếm lớn hơn.
+- Có nhiều menu hiển thị hơn.
+- Một số dropdown/category bắt đầu xuất hiện lại.
+
+### Lưới content thay đổi mấy cột?
+
+- Product grid khoảng **3–4 cột**.
+- Khoảng cách card rộng hơn mobile.
+
+### Elements nào bị ẩn?
+
+- Ít thành phần bị ẩn hơn mobile.
+- Một số block promotion hoặc sidebar vẫn được giản lược.
+
+### Font size có thay đổi không?
+
+Có.
+
+- Font lớn hơn mobile.
+- Khoảng cách giữa các phần tử thoáng hơn.
+
+---
+
+## 3. Desktop (1440px)
+
+### Navigation thay đổi như thế nào?
+
+- Navigation đầy đủ.
+- Header hiển thị nhiều liên kết ngang.
+- Category menu, account, notifications, cart hiển thị đầy đủ.
+- Không cần hamburger menu.
+
+### Lưới content thay đổi mấy cột?
+
+- Product grid thường hiển thị khoảng **5–6 cột** (tuỳ section).
+- Khoảng trắng nhiều hơn, card rộng hơn.
+
+### Elements nào bị ẩn?
+
+- Hầu như không bị ẩn.
+- Banner, recommendation section, category panel hiển thị đầy đủ.
+
+### Font size có thay đổi không?
+
+Có.
+
+- Heading lớn hơn.
+- Nội dung dễ đọc hơn.
+- Khoảng cách giữa các thành phần rộng hơn.
+
+---
+
+# So sánh Responsive Layout
+
+| Kích thước | Navigation                 | Product Grid | Thành phần ẩn       |
+| ---------- | -------------------------- | -----------: | ------------------- |
+| 375px      | Header tối giản, icon/menu |        2 cột | Sidebar, banner lớn |
+| 768px      | Navigation mở rộng hơn     |      3–4 cột | Ít thành phần bị ẩn |
+| 1440px     | Navigation đầy đủ          |      5–6 cột | Gần như không       |
+
+---
+
+# Media Queries tìm được trong DevTools
+
+Mở:
+
+F12 → DevTools → Inspect → Styles → search "@media"
+
+Shopee sử dụng responsive CSS với nhiều breakpoint để thay đổi layout theo kích thước màn hình. Responsive web thường dùng media queries để thay đổi navigation, grid và typography giữa mobile/tablet/desktop. :contentReference[oaicite:1]{index=1}
+
+### Ví dụ media query 1
+
+```css
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+  }
+}
+```
+
+Ý nghĩa:
+
+- Khi màn hình nhỏ hơn tablet, layout được chuyển để phù hợp mobile.
+
+---
+
+### Ví dụ media query 2
+
+```css
+@media (min-width: 1024px) {
+  .product-grid {
+    grid-template-columns: repeat(6, 1fr);
+  }
+}
+```
+
+Ý nghĩa:
+
+- Desktop hiển thị nhiều sản phẩm hơn trên cùng hàng.
+
+---
+
+# Kết luận
+
+Shopee sử dụng Responsive Web Design để thay đổi giao diện theo kích thước màn hình.
+
+- Mobile: giao diện tối giản, tập trung thao tác nhanh.
+- Tablet: hiển thị nhiều nội dung hơn.
+- Desktop: navigation và product grid đầy đủ.
+
+Trang sử dụng media queries để thay đổi bố cục, số cột, font size và các thành phần giao diện theo từng breakpoint. Responsive design giúp tối ưu trải nghiệm trên nhiều thiết bị khác nhau.
+
+
 
