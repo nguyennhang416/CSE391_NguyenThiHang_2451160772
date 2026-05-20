@@ -42,3 +42,27 @@ Layout:
 - 3 cột
 - 3 hàng
 - Item cuối nằm hàng 3 cột 1
+# Câu C1
+
+Navbar → Flexbox
+Instagram grid → Grid
+Blog layout → Grid
+Footer 4 cột → Grid
+Product card → Flexbox
+
+# Câu C2
+
+Lỗi 1:
+Cards cao thấp khác nhau.
+Sửa bằng:
+display: flex;
+flex-direction: column;
+margin-top: auto;
+
+Lỗi 2:
+Thiếu justify-content và align-items.
+
+Lỗi 3:
+Sidebar bị shrink.
+Sửa:
+flex-shrink: 0;
