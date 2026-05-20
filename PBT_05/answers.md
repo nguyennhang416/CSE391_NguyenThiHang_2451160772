@@ -124,3 +124,46 @@ Cần compile SCSS → CSS bằng Sass compiler.
 Ví dụ:
 
 sass style.scss style.css
+
+# Câu B3 — SCSS
+
+## SCSS Compile Command
+
+Lệnh compile SCSS sang CSS:
+
+```bash
+sass scss/style.scss responsive.css
+```
+
+Hoặc dùng watch mode:
+
+```bash
+sass --watch scss/style.scss:responsive.css
+```
+
+## Quy trình hoạt động
+
+```text
+style.scss → Sass Compile → responsive.css
+```
+
+## Giải thích
+
+- `style.scss`
+  → File SCSS gốc chứa code Sass.
+
+- `Sass Compile`
+  → Trình biên dịch Sass chuyển SCSS thành CSS thuần.
+
+- `responsive.css`
+  → File CSS cuối cùng được browser đọc.
+
+## Link CSS trong HTML
+
+```html
+<link rel="stylesheet" href="responsive.css">
+```
+
+> Browser không đọc trực tiếp file `.scss`, nên luôn phải compile sang `.css`.
+
+
