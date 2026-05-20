@@ -1,0 +1,269 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ================= MOBILE FIRST ================= */
+
+body{
+    font-family: Arial, sans-serif;
+
+    background: #f4f4f4;
+
+    font-size: 14px;
+}
+
+/* IMAGES RESPONSIVE */
+
+img{
+    max-width: 100%;
+
+    height: auto;
+
+    display: block;
+}
+
+/* ================= HEADER ================= */
+
+.header{
+    background: #222;
+
+    color: white;
+
+    padding: 15px 20px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+}
+
+.logo{
+    font-size: 24px;
+
+    font-weight: bold;
+}
+
+/* HAMBURGER */
+
+.hamburger{
+    font-size: 28px;
+
+    cursor: pointer;
+}
+
+/* NAV ẨN MOBILE */
+
+.nav{
+    display: none;
+}
+
+/* ================= LAYOUT ================= */
+
+.container{
+    padding: 20px;
+}
+
+/* SIDEBAR ẨN MOBILE */
+
+.sidebar{
+    display: none;
+}
+
+/* ADS ẨN MOBILE */
+
+.ads{
+    display: none;
+}
+
+/* ================= PRODUCTS ================= */
+
+.products{
+    display: grid;
+
+    grid-template-columns: 1fr;
+
+    gap: 20px;
+}
+
+/* CARD */
+
+.card{
+    background: white;
+
+    border-radius: 12px;
+
+    padding: 15px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    transition: 0.3s;
+
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.card:hover{
+    transform: translateY(-5px);
+
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+.card h3{
+    margin: 15px 0 10px;
+}
+
+.card p{
+    color: red;
+
+    font-weight: bold;
+
+    margin-bottom: 15px;
+}
+
+.card button{
+    margin-top: auto;
+
+    padding: 12px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    background: #222;
+
+    color: white;
+
+    cursor: pointer;
+}
+
+.card button:hover{
+    background: orange;
+}
+
+/* ================= FOOTER ================= */
+
+.footer{
+    background: #222;
+
+    color: white;
+
+    text-align: center;
+
+    padding: 20px;
+
+    margin-top: 20px;
+}
+
+/* ================= TABLET ================= */
+
+@media (min-width: 768px){
+
+    body{
+        font-size: 16px;
+    }
+
+    /* ẨN HAMBURGER */
+
+    .hamburger{
+        display: none;
+    }
+
+    /* NAV HIỆN */
+
+    .nav{
+        display: flex;
+
+        gap: 20px;
+    }
+
+    .nav a{
+        color: white;
+
+        text-decoration: none;
+    }
+
+    .nav a:hover{
+        color: orange;
+    }
+
+    /* SIDEBAR NGANG */
+
+    .sidebar{
+        display: block;
+
+        background: white;
+
+        padding: 20px;
+
+        border-radius: 12px;
+
+        margin-bottom: 20px;
+    }
+
+    .sidebar select{
+        width: 100%;
+
+        padding: 10px;
+
+        margin-top: 10px;
+    }
+
+    /* PRODUCT GRID 2 CỘT */
+
+    .products{
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* ================= DESKTOP ================= */
+
+@media (min-width: 1024px){
+
+    body{
+        font-size: 18px;
+    }
+
+    .container{
+        display: grid;
+
+        grid-template-columns: 220px 1fr 220px;
+
+        gap: 20px;
+    }
+
+    /* SIDEBAR */
+
+    .sidebar{
+        margin-bottom: 0;
+
+        height: fit-content;
+    }
+
+    /* ADS HIỆN */
+
+    .ads{
+        display: block;
+
+        background: white;
+
+        padding: 20px;
+
+        border-radius: 12px;
+
+        text-align: center;
+    }
+
+    .ads img{
+        border-radius: 10px;
+    }
+
+    /* PRODUCT GRID 4 CỘT */
+
+    .products{
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
