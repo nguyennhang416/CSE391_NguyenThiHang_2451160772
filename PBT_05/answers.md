@@ -326,5 +326,288 @@ Shopee sử dụng Responsive Web Design để thay đổi giao diện theo kíc
 
 Trang sử dụng media queries để thay đổi bố cục, số cột, font size và các thành phần giao diện theo từng breakpoint. Responsive design giúp tối ưu trải nghiệm trên nhiều thiết bị khác nhau.
 
+# Câu C2
 
+# 1. Responsive Wireframe
+
+---
+
+# Mobile (375px)
+
+## Ý tưởng
+
+- Layout 1 cột
+- Ưu tiên:
+  - Hero
+  - Form đặt bàn
+  - Menu món ăn
+- Google Maps đặt cuối trang
+- Một số text phụ bị ẩn để tiết kiệm không gian
+
+---
+
+## Wireframe Mobile
+
+```text
+┌─────────────────┐
+│ LOGO   ☰ MENU   │
+│  Hotline        │
+├─────────────────┤
+│                 │
+│   HERO IMAGE    │
+│                 │
+├─────────────────┤
+│  FORM ĐẶT BÀN   │
+│  - ngày         │
+│  - giờ          │
+│  - số người     │
+│  - ghi chú      │
+├─────────────────┤
+│   MÓN ĂN 1      │
+├─────────────────┤
+│   MÓN ĂN 2      │
+├─────────────────┤
+│   MÓN ĂN 3      │
+├─────────────────┤
+│   GOOGLE MAP    │
+├─────────────────┤
+│     FOOTER      │
+└─────────────────┘
+```
+
+---
+
+## Mobile Strategy
+
+### Ẩn gì?
+
+- Một số menu navigation
+- Text mô tả dài
+- Gallery phụ
+
+### Form nằm đâu?
+
+- Đặt ngay dưới Hero
+- Dễ thao tác trên mobile
+
+---
+
+# Tablet (768px)
+
+## Ý tưởng
+
+- Layout 2 cột nhẹ
+- Gallery món ăn:
+  - 2 cột
+- Form và map có thể đặt cạnh nhau
+
+---
+
+## Wireframe Tablet
+
+```text
+┌─────────────────────────────┐
+│ LOGO      MENU     Hotline  │
+├─────────────────────────────┤
+│                             │
+│         HERO IMAGE          │
+│                             │
+├──────────────┬──────────────┤
+│ FORM         │ GOOGLE MAP   │
+├──────────────┴──────────────┤
+│   FOOD GRID (2 COLUMNS)     │
+│ ┌──────┬──────┐             │
+│ │Food  │Food  │             │
+│ ├──────┼──────┤             │
+│ │Food  │Food  │             │
+│ └──────┴──────┘             │
+├─────────────────────────────┤
+│           FOOTER            │
+└─────────────────────────────┘
+```
+
+---
+
+## Tablet Strategy
+
+### Grid ảnh
+
+- 2 cột
+
+### Google Maps
+
+- Đặt cạnh form
+- Tận dụng chiều ngang tablet
+
+---
+
+# Desktop (1440px)
+
+## Ý tưởng
+
+- Layout rộng
+- Hero lớn toàn màn hình ngang
+- Grid món ăn:
+  - 3 cột
+- Form + Map song song
+- Có thể thêm sidebar nhỏ
+
+---
+
+## Wireframe Desktop
+
+```text
+┌──────────────────────────────────────────────┐
+│ LOGO      NAVIGATION        HOTLINE          │
+├──────────────────────────────────────────────┤
+│                                              │
+│               HERO IMAGE                     │
+│                                              │
+├──────────────────────────────────────────────┤
+│ FOOD GRID                    │ SIDEBAR       │
+│ ┌─────┬─────┬─────┐          │ Promotion     │
+│ │Food │Food │Food │          │ Opening Hour  │
+│ ├─────┼─────┼─────┤          │ Social Media  │
+│ │Food │Food │Food │          │               │
+│ └─────┴─────┴─────┘          │               │
+├──────────────────────────────┴───────────────┤
+│ FORM ĐẶT BÀN        │       GOOGLE MAP       │
+├──────────────────────────────────────────────┤
+│                   FOOTER                     │
+└──────────────────────────────────────────────┘
+```
+
+---
+
+## Desktop Strategy
+
+### Layout
+
+- 2–3 cột
+- Nội dung chính + sidebar
+
+### Sidebar
+
+Có thể chứa:
+- Promotion
+- Giờ mở cửa
+- Social links
+
+---
+
+# 2. CSS Skeleton (Mobile-First)
+
+## HTML Structure
+
+```html
+<div class="container">
+
+    <header class="header"></header>
+
+    <section class="hero"></section>
+
+    <section class="booking"></section>
+
+    <section class="gallery"></section>
+
+    <aside class="sidebar"></aside>
+
+    <section class="map"></section>
+
+    <footer class="footer"></footer>
+
+</div>
+```
+
+---
+
+# CSS
+
+```css
+/* ================= MOBILE FIRST ================= */
+
+.container{
+    display: grid;
+
+    grid-template-columns: 1fr;
+
+    gap: 20px;
+}
+
+/* FOOD GRID */
+
+.gallery{
+    display: grid;
+
+    grid-template-columns: 1fr;
+
+    gap: 15px;
+}
+
+/* Ẩn sidebar trên mobile */
+
+.sidebar{
+    display: none;
+}
+
+/* ================= TABLET ================= */
+
+@media (min-width: 768px){
+
+    .gallery{
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .booking-map{
+        display: grid;
+
+        grid-template-columns: 1fr 1fr;
+
+        gap: 20px;
+    }
+}
+
+/* ================= DESKTOP ================= */
+
+@media (min-width: 1200px){
+
+    .container{
+        grid-template-columns: 3fr 1fr;
+    }
+
+    .gallery{
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .sidebar{
+        display: block;
+    }
+
+    .booking-map{
+        display: grid;
+
+        grid-template-columns: 1fr 1fr;
+
+        gap: 30px;
+    }
+}
+```
+
+---
+
+# Giải thích Responsive Strategy
+
+| Kích thước | Layout | Gallery | Sidebar |
+|---|---|---|---|
+| Mobile | 1 cột | 1 cột | Ẩn |
+| Tablet | 2 cột nhẹ | 2 cột | Ẩn |
+| Desktop | 2–3 cột | 3 cột | Hiện |
+
+B3:
+## SCSS Compile Command
+
+Để compile SCSS → CSS:
+
+```bash
+sass scss/style.scss css/style.css
 
