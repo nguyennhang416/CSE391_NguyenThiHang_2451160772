@@ -1,133 +1,286 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 
 <head>
+
     <meta charset="UTF-8">
 
-    <meta name="viewport"
-        content="width=device-width, initial-scale=1.0">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-    <title>Quản lý sinh viên</title>
+    <title>
+        Quản Lý Sinh Viên
+    </title>
 
-    <link rel="stylesheet" href="style.css">
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
 </head>
 
 <body>
 
-    <h1>Quản lý sinh viên</h1>
+    <div class="container">
 
-    <!-- BUTTON -->
-    <button id="btnAdd">
-        Thêm sinh viên
-    </button>
+        <!-- =========================
+            HEADER
+        ========================== -->
 
-    <!-- THỐNG KÊ -->
-    <div class="statistics">
+        <div class="header">
 
-        <p>
-            Tổng sinh viên:
-            <span id="totalStudents">0</span>
-        </p>
+            <h1>
+                Quản Lý Sinh Viên
+            </h1>
 
-        <p>
-            Điểm trung bình:
-            <span id="avgScore">0</span>
-        </p>
+            <button
+                id="btnAdd"
+                class="btn-add"
+            >
+                + Thêm Sinh Viên
+            </button>
+
+        </div>
+
+        <!-- =========================
+            MESSAGE
+        ========================== -->
+
+        <div
+            id="message"
+            class="message"
+        >
+        </div>
+
+        <!-- =========================
+            TABLE
+        ========================== -->
+
+        <div class="table-container">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>Mã SV</th>
+
+                        <th>Họ Và Tên</th>
+
+                        <th>Ngày Sinh</th>
+
+                        <th>Lớp</th>
+
+                        <th>Điểm TB</th>
+
+                        <th>Email</th>
+
+                        <th>Hành Động</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody id="studentList">
+
+                    <!-- Render bằng JS -->
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+        <!-- =========================
+            STATISTICS
+        ========================== -->
+
+        <div class="statistics">
+
+            <div class="stat-box">
+
+                <h3>
+                    Tổng Sinh Viên
+                </h3>
+
+                <p id="totalStudents">
+                    0
+                </p>
+
+            </div>
+
+            <div class="stat-box">
+
+                <h3>
+                    Điểm Trung Bình
+                </h3>
+
+                <p id="avgScore">
+                    0
+                </p>
+
+            </div>
+
+        </div>
 
     </div>
 
-    <!-- THÔNG BÁO -->
-    <p id="message"></p>
+    <!-- =========================
+        MODAL
+    ========================== -->
 
-    <!-- BẢNG -->
-    <table border="1">
-
-        <thead>
-
-            <tr>
-
-                <th>Mã SV</th>
-
-                <th>Họ tên</th>
-
-                <th>Ngày sinh</th>
-
-                <th>Lớp</th>
-
-                <th>Điểm</th>
-
-                <th>Email</th>
-
-                <th>Hành động</th>
-
-            </tr>
-
-        </thead>
-
-        <tbody id="studentList">
-
-        </tbody>
-
-    </table>
-
-    <!-- MODAL -->
-    <div class="modal hidden"
-        id="studentModal">
+    <div
+        id="studentModal"
+        class="modal hidden"
+    >
 
         <div class="modal-content">
 
-            <h2 id="formTitle">
-                Thêm sinh viên
+            <h2>
+                Thêm Sinh Viên
             </h2>
+
+            <!-- =========================
+                FORM
+            ========================== -->
 
             <form id="studentForm">
 
-                <input
-                    type="text"
-                    id="studentId"
-                    placeholder="Mã sinh viên">
+                <!-- MÃ SINH VIÊN -->
 
-                <input
-                    type="text"
-                    id="fullName"
-                    placeholder="Họ tên">
+                <div class="form-group">
 
-                <input
-                    type="date"
-                    id="birthday">
+                    <label for="studentId">
+                        Mã Sinh Viên
+                    </label>
 
-                <input
-                    type="text"
-                    id="className"
-                    placeholder="Lớp">
+                    <input
+                        type="text"
+                        id="studentId"
+                        placeholder="Nhập mã sinh viên"
+                        required
+                    >
 
-                <input
-                    type="number"
-                    id="score"
-                    placeholder="Điểm">
+                </div>
 
-                <input
-                    type="email"
-                    id="email"
-                    placeholder="Email">
+                <!-- HỌ TÊN -->
 
-                <button type="submit">
-                    Lưu
-                </button>
+                <div class="form-group">
 
-                <button
-                    type="button"
-                    id="btnClose">
+                    <label for="fullName">
+                        Họ Và Tên
+                    </label>
 
-                    Hủy
+                    <input
+                        type="text"
+                        id="fullName"
+                        placeholder="Nhập họ tên"
+                        required
+                    >
 
-                </button>
+                </div>
+
+                <!-- NGÀY SINH -->
+
+                <div class="form-group">
+
+                    <label for="birthday">
+                        Ngày Sinh
+                    </label>
+
+                    <input
+                        type="date"
+                        id="birthday"
+                        required
+                    >
+
+                </div>
+
+                <!-- LỚP -->
+
+                <div class="form-group">
+
+                    <label for="className">
+                        Lớp
+                    </label>
+
+                    <input
+                        type="text"
+                        id="className"
+                        placeholder="Nhập lớp"
+                        required
+                    >
+
+                </div>
+
+                <!-- ĐIỂM -->
+
+                <div class="form-group">
+
+                    <label for="score">
+                        Điểm Trung Bình
+                    </label>
+
+                    <input
+                        type="number"
+                        id="score"
+                        step="0.1"
+                        placeholder="Nhập điểm"
+                        required
+                    >
+
+                </div>
+
+                <!-- EMAIL -->
+
+                <div class="form-group">
+
+                    <label for="email">
+                        Email
+                    </label>
+
+                    <input
+                        type="email"
+                        id="email"
+                        placeholder="Nhập email"
+                        required
+                    >
+
+                </div>
+
+                <!-- BUTTONS -->
+
+                <div class="form-actions">
+
+                    <button
+                        type="submit"
+                        class="btn-save"
+                    >
+                        Lưu
+                    </button>
+
+                    <button
+                        type="button"
+                        id="btnClose"
+                        class="btn-close"
+                    >
+                        Đóng
+                    </button>
+
+                </div>
 
             </form>
 
         </div>
 
     </div>
+
+    <!-- =========================
+        JAVASCRIPT
+    ========================== -->
 
     <script src="app.js"></script>
 

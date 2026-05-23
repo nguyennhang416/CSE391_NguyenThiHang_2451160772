@@ -1,7 +1,137 @@
-body {
-    font-family: Arial;
+/* =========================
+    RESET
+========================= */
 
-    padding: 20px;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* =========================
+    BODY
+========================= */
+
+body {
+    font-family: Arial, sans-serif;
+
+    background: #f1f5f9;
+
+    min-height: 100vh;
+
+    padding: 40px;
+
+    color: #333;
+}
+
+/* =========================
+    CONTAINER
+========================= */
+
+.container {
+    max-width: 1200px;
+
+    margin: auto;
+
+    background: white;
+
+    padding: 35px;
+
+    border-radius: 20px;
+
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+
+/* =========================
+    HEADER
+========================= */
+
+.header {
+    position: relative;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    margin-bottom: 35px;
+
+    padding-bottom: 20px;
+
+    border-bottom: 2px solid #f1f5f9;
+}
+
+/* =========================
+    TITLE
+========================= */
+
+.header h1 {
+    font-size: 38px;
+
+    color: #2563eb;
+
+    font-weight: bold;
+
+    text-align: center;
+
+    letter-spacing: 1px;
+
+    text-shadow: 2px 2px 5px rgba(0,0,0,0.08);
+}
+
+/* =========================
+    BUTTON
+========================= */
+
+button {
+    border: none;
+
+    cursor: pointer;
+
+    transition: all 0.3s ease;
+
+    font-size: 14px;
+}
+
+/* =========================
+    ADD BUTTON
+========================= */
+
+.btn-add {
+    position: absolute;
+
+    right: 0;
+
+    background: #2563eb;
+
+    color: white;
+
+    padding: 12px 22px;
+
+    border-radius: 10px;
+
+    font-weight: bold;
+
+    box-shadow: 0 4px 12px rgba(37,99,235,0.25);
+}
+
+.btn-add:hover {
+    background: #1d4ed8;
+
+    transform: translateY(-2px);
+}
+
+/* =========================
+    TABLE
+========================= */
+
+.table-container {
+    overflow-x: auto;
+
+    border-radius: 16px;
+
+    box-shadow: 0 5px 18px rgba(0,0,0,0.08);
 }
 
 table {
@@ -9,21 +139,154 @@ table {
 
     border-collapse: collapse;
 
-    margin-top: 20px;
+    background: white;
 }
 
-th,
+/* =========================
+    TABLE HEADER
+========================= */
+
+thead {
+    background: #2563eb;
+
+    color: white;
+}
+
+th {
+    padding: 16px;
+
+    font-size: 15px;
+
+    font-weight: bold;
+}
+
+/* =========================
+    TABLE BODY
+========================= */
+
 td {
-    padding: 10px;
+    padding: 15px;
 
     text-align: center;
+
+    border-bottom: 1px solid #e5e7eb;
 }
 
-button {
-    padding: 8px 12px;
-
-    cursor: pointer;
+tbody tr:nth-child(even) {
+    background: #f8fafc;
 }
+
+tbody tr:hover {
+    background: #eff6ff;
+}
+
+/* =========================
+    EDIT BUTTON
+========================= */
+
+.edit-btn {
+    background: #f59e0b;
+
+    color: white;
+
+    padding: 8px 14px;
+
+    border-radius: 7px;
+
+    margin-right: 6px;
+}
+
+.edit-btn:hover {
+    background: #d97706;
+}
+
+/* =========================
+    DELETE BUTTON
+========================= */
+
+.delete-btn {
+    background: #ef4444;
+
+    color: white;
+
+    padding: 8px 14px;
+
+    border-radius: 7px;
+}
+
+.delete-btn:hover {
+    background: #dc2626;
+}
+
+/* =========================
+    STATISTICS
+========================= */
+
+.statistics {
+    margin-top: 30px;
+
+    display: flex;
+
+    gap: 20px;
+
+    flex-wrap: wrap;
+}
+
+/* =========================
+    STAT BOX
+========================= */
+
+.stat-box {
+    flex: 1;
+
+    min-width: 250px;
+
+    background: linear-gradient(135deg, #2563eb, #3b82f6);
+
+    color: white;
+
+    padding: 25px;
+
+    border-radius: 16px;
+
+    box-shadow: 0 6px 18px rgba(37,99,235,0.25);
+}
+
+.stat-box h3 {
+    margin-bottom: 12px;
+
+    font-size: 18px;
+}
+
+.stat-box p {
+    font-size: 30px;
+
+    font-weight: bold;
+}
+
+/* =========================
+    MESSAGE
+========================= */
+
+.message {
+    margin-bottom: 20px;
+
+    padding: 15px;
+
+    border-radius: 10px;
+
+    text-align: center;
+
+    font-weight: bold;
+
+    color: #166534;
+
+    background: #dcfce7;
+}
+
+/* =========================
+    MODAL
+========================= */
 
 .modal {
     position: fixed;
@@ -39,31 +302,206 @@ button {
     display: flex;
 
     justify-content: center;
+
     align-items: center;
+
+    z-index: 1000;
 }
 
-.modal-content {
-    background: white;
-
-    padding: 20px;
-
-    width: 300px;
-
-    display: flex;
-
-    flex-direction: column;
-
-    gap: 10px;
-}
+/* =========================
+    HIDDEN
+========================= */
 
 .hidden {
     display: none;
 }
 
-form {
+/* =========================
+    MODAL CONTENT
+========================= */
+
+.modal-content {
+    background: white;
+
+    width: 450px;
+
+    padding: 30px;
+
+    border-radius: 18px;
+
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+
+    animation: showModal 0.3s ease;
+}
+
+.modal-content h2 {
+    text-align: center;
+
+    margin-bottom: 25px;
+
+    color: #2563eb;
+}
+
+/* =========================
+    FORM
+========================= */
+
+.form-group {
+    margin-bottom: 18px;
+}
+
+.form-group label {
+    display: block;
+
+    margin-bottom: 8px;
+
+    font-weight: bold;
+}
+
+.form-group input {
+    width: 100%;
+
+    padding: 12px;
+
+    border: 1px solid #d1d5db;
+
+    border-radius: 10px;
+
+    font-size: 14px;
+
+    transition: 0.3s;
+}
+
+.form-group input:focus {
+    outline: none;
+
+    border-color: #2563eb;
+
+    box-shadow: 0 0 8px rgba(37,99,235,0.2);
+}
+
+/* =========================
+    FORM ACTIONS
+========================= */
+
+.form-actions {
     display: flex;
 
-    flex-direction: column;
+    justify-content: flex-end;
 
     gap: 10px;
+
+    margin-top: 20px;
+}
+
+/* =========================
+    SAVE BUTTON
+========================= */
+
+.btn-save {
+    background: #22c55e;
+
+    color: white;
+
+    padding: 10px 18px;
+
+    border-radius: 8px;
+}
+
+.btn-save:hover {
+    background: #16a34a;
+}
+
+/* =========================
+    CLOSE BUTTON
+========================= */
+
+.btn-close {
+    background: #ef4444;
+
+    color: white;
+
+    padding: 10px 18px;
+
+    border-radius: 8px;
+}
+
+.btn-close:hover {
+    background: #dc2626;
+}
+
+/* =========================
+    EMPTY DATA
+========================= */
+
+.empty-data {
+    padding: 25px;
+
+    text-align: center;
+
+    color: #777;
+
+    font-style: italic;
+}
+
+/* =========================
+    ANIMATION
+========================= */
+
+@keyframes showModal {
+
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+/* =========================
+    RESPONSIVE
+========================= */
+
+@media (max-width: 768px) {
+
+    body {
+        padding: 15px;
+    }
+
+    .container {
+        padding: 20px;
+    }
+
+    .header {
+        flex-direction: column;
+
+        gap: 20px;
+    }
+
+    .btn-add {
+        position: static;
+    }
+
+    .header h1 {
+        font-size: 28px;
+    }
+
+    .statistics {
+        flex-direction: column;
+    }
+
+    .modal-content {
+        width: 95%;
+    }
+
+    th,
+    td {
+        padding: 10px;
+
+        font-size: 13px;
+    }
 }
