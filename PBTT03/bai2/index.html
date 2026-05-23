@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>Quản lý công việc</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>Quản lý công việc cá nhân</h1>
+
+        <div class="toolbar">
+
+            <button id="btnAddTask">
+                Thêm công việc
+            </button>
+
+        </div>
+
+        <div class="statistics">
+
+            <div class="stat-box">
+                <h3>Tổng công việc</h3>
+                <p id="totalTasks">0</p>
+            </div>
+
+            <div class="stat-box">
+                <h3>Đã hoàn thành</h3>
+                <p id="completedTasks">0</p>
+            </div>
+
+            <div class="stat-box">
+                <h3>Chưa hoàn thành</h3>
+                <p id="pendingTasks">0</p>
+            </div>
+
+        </div>
+
+        <p id="message"></p>
+
+        <div id="taskList" class="task-list">
+
+        </div>
+
+    </div>
+
+
+    <!-- MODAL -->
+
+    <div class="modal hidden"
+        id="taskModal">
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+
+                <h2>
+                    Thêm công việc
+                </h2>
+
+                <button id="btnClose">
+                    X
+                </button>
+
+            </div>
+
+            <form id="taskForm">
+
+                <input
+                    type="text"
+                    id="title"
+                    placeholder="Tiêu đề công việc"
+                    required>
+
+                <textarea
+                    id="description"
+                    placeholder="Mô tả công việc"
+                    required>
+                </textarea>
+
+                <input
+                    type="date"
+                    id="deadline"
+                    required>
+
+                <select id="priority">
+
+                    <option value="Cao">
+                        Cao
+                    </option>
+
+                    <option value="Trung bình">
+                        Trung bình
+                    </option>
+
+                    <option value="Thấp">
+                        Thấp
+                    </option>
+
+                </select>
+
+                <button
+                    type="submit"
+                    class="save-btn">
+
+                    Lưu công việc
+
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+    <script src="app.js"></script>
+
+</body>
+
+</html>
