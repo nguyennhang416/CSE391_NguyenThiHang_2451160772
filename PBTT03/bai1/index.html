@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>Quản lý sinh viên</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <h1>Quản lý sinh viên</h1>
+
+    <!-- BUTTON -->
+    <button id="btnAdd">
+        Thêm sinh viên
+    </button>
+
+    <!-- THỐNG KÊ -->
+    <div class="statistics">
+
+        <p>
+            Tổng sinh viên:
+            <span id="totalStudents">0</span>
+        </p>
+
+        <p>
+            Điểm trung bình:
+            <span id="avgScore">0</span>
+        </p>
+
+    </div>
+
+    <!-- THÔNG BÁO -->
+    <p id="message"></p>
+
+    <!-- BẢNG -->
+    <table border="1">
+
+        <thead>
+
+            <tr>
+
+                <th>Mã SV</th>
+
+                <th>Họ tên</th>
+
+                <th>Ngày sinh</th>
+
+                <th>Lớp</th>
+
+                <th>Điểm</th>
+
+                <th>Email</th>
+
+                <th>Hành động</th>
+
+            </tr>
+
+        </thead>
+
+        <tbody id="studentList">
+
+        </tbody>
+
+    </table>
+
+    <!-- MODAL -->
+    <div class="modal hidden"
+        id="studentModal">
+
+        <div class="modal-content">
+
+            <h2 id="formTitle">
+                Thêm sinh viên
+            </h2>
+
+            <form id="studentForm">
+
+                <input
+                    type="text"
+                    id="studentId"
+                    placeholder="Mã sinh viên">
+
+                <input
+                    type="text"
+                    id="fullName"
+                    placeholder="Họ tên">
+
+                <input
+                    type="date"
+                    id="birthday">
+
+                <input
+                    type="text"
+                    id="className"
+                    placeholder="Lớp">
+
+                <input
+                    type="number"
+                    id="score"
+                    placeholder="Điểm">
+
+                <input
+                    type="email"
+                    id="email"
+                    placeholder="Email">
+
+                <button type="submit">
+                    Lưu
+                </button>
+
+                <button
+                    type="button"
+                    id="btnClose">
+
+                    Hủy
+
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+    <script src="app.js"></script>
+
+</body>
+
+</html>
