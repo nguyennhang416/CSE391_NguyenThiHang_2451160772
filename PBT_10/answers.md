@@ -228,5 +228,105 @@ try {
 } catch (err) {
   // hiển thị lỗi phù hợp với người dùng
 }
+
+## C2 — Promise.all vs Promise.allSettled vs Promise.race
+
+| Method | Khi nào resolve? | Khi nào reject? | Use case |
+|--------|------------------|-----------------|----------|
+| `.all()` | Resolve khi tất cả Promise trong mảng đều fulfilled. | Reject ngay khi một Promise bị rejected. | Dùng khi cần tất cả kết quả thành công trước khi tiếp tục, ví dụ tải dữ liệu user + profile + settings cùng lúc và chỉ render khi đủ. |
+| `.allSettled()` | Resolve sau khi tất cả Promise đều hoàn thành (fulfilled hoặc rejected). | Không reject; luôn resolve với trạng thái của từng Promise. | Dùng khi cần xử lý nhiều API riêng lẻ và không muốn 1 API lỗi phá cả luồng, ví dụ hiển thị dashboard nhiều widget. |
+| `.race()` | Resolve hoặc reject ngay khi Promise đầu tiên hoàn thành (fulfilled/rejected). | Reject khi Promise đầu tiên reject. | Dùng khi cần kết quả nhanh nhất, như chọn server phản hồi nhanh nhất hoặc timeout bằng Promise race. |
+| `.any()` | Resolve khi có ít nhất một Promise fulfilled. | Reject khi tất cả Promise đều rejected. | Dùng khi cần một trong nhiều nguồn dữ liệu thành công, ví dụ thử nhiều endpoint cache/API và chỉ cần 1 dữ liệu hợp lệ. |
+
+### Ví dụ thực tế
+
+#### `.all()`
+
+Dùng khi phải có đầy đủ dữ liệu, không thể render nếu thiếu một nguồn:
+
+```javascript
+async function loadDashboardData(userId) {
+  const [user, orders, notifications] = await Promise.all([
+    fetch(`/api/users/${userId}`).then(r => r.json()),
+    fetch(`/api/orders?user=${userId}`).then(r => r.json()),
+    fetch(`/api/notifications?user=${userId}`).then(r => r.json()),
+  ]);
+
+  renderDashboard(user, orders, notifications);
+}
+```
+
+#### `.allSettled()`
+
+Dùng khi mỗi API độc lập và muốn hiển thị từng widget riêng lẻ:
+
+```javascript
+async function loadWidgets() {
+  const results = await Promise.allSettled([
+    fetch('/api/users').then(r => r.json()),
+    fetch('/api/posts').then(r => r.json()),
+    fetch('/api/comments').then(r => r.json()),
+  ]);
+
+  results.forEach((result, index) => {
+    if (result.status === 'fulfilled') {
+      renderWidget(index, result.value);
+    } else {
+      renderWidgetError(index, result.reason?.message || 'Lỗi');
+    }
+  });
+}
+```
+
+#### `.race()`
+
+Dùng để chọn kết quả nhanh nhất hoặc thực hiện timeout:
+
+```javascript
+async function fetchFastestImage() {
+  const urls = [
+    '/cdn/image1.jpg',
+    '/cdn/image2.jpg',
+    '/mirror/image.jpg',
+  ];
+
+  const response = await Promise.race(
+    urls.map(url => fetch(url))
+  );
+
+  if (!response.ok) throw new Error('Không tải được ảnh nhanh nhất');
+  return response.blob();
+}
+```
+
+#### `.any()`
+
+Dùng khi chỉ cần một trong các nguồn thành công:
+
+```javascript
+async function getBackupData() {
+  const endpoints = [
+    '/api/cache',
+    '/api/primary',
+    '/api/fallback',
+  ];
+
+  const data = await Promise.any(
+    endpoints.map(url => fetch(url).then(res => {
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      return res.json();
+    }))
+  );
+
+  return data;
+}
+```
+
+### Khi nào dùng mỗi method
+
+- `.all()` khi bạn cần tất cả kết quả hợp lệ cùng lúc và không muốn tiến trình nếu thiếu dữ liệu.
+- `.allSettled()` khi muốn thu thập trạng thái đầy đủ của mỗi Promise và xử lý riêng lẻ từng cái.
+- `.race()` khi cần kết quả nhanh nhất hoặc dùng làm timeout cạnh tranh giữa nhiều nguồn.
+- `.any()` khi chỉ cần một nguồn thành công trong số nhiều nguồn khả dĩ.
 ```
 
