@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard APIs</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+
+        <div class="header">
+            <h1>Dashboard APIs</h1>
+
+            <button id="refreshBtn">
+                Refresh All
+            </button>
+        </div>
+
+        <div id="globalLoading" class="global-loading">
+            Đang tải dữ liệu...
+        </div>
+
+        <p id="loadTime"></p>
+
+        <div class="dashboard">
+
+            <div class="widget">
+                <h2>User</h2>
+                <div id="userWidget">Loading...</div>
+            </div>
+
+            <div class="widget">
+                <h2>Weather</h2>
+                <div id="weatherWidget">Loading...</div>
+            </div>
+
+            <div class="widget">
+                <h2>Country</h2>
+                <div id="countryWidget">Loading...</div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
