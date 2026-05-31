@@ -228,6 +228,7 @@ try {
 } catch (err) {
   // hiển thị lỗi phù hợp với người dùng
 }
+```
 
 ## C2 — Promise.all vs Promise.allSettled vs Promise.race
 
