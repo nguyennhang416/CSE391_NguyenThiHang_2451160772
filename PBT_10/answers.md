@@ -140,3 +140,93 @@ async function loadUserComments(user) {
 - `async/await` giúp viết code bất đồng bộ trông giống như code đồng bộ, tránh lồng callback sâu.
 - Promise chuyển trạng thái từ `Pending` sang `Fulfilled` khi thực hiện thành công, hoặc `Rejected` khi gặp lỗi.
 - `try...catch` trong `async` bắt lỗi giống như xử lý trong hàm đồng bộ.
+
+## C1 — Error Handling Strategy
+
+Phần này mô tả chiến lược xử lý lỗi cho một ứng dụng E‑Commerce gọi nhiều API: mạng, lỗi server, timeout và retry.
+
+1) Network errors (mất mạng)
+
+- Triển khai UI rõ ràng: thông báo "Bạn đang offline" và vô hiệu hoá các hành động cần mạng.
+- Dùng cơ chế queue + background sync (Service Worker) để lưu các thao tác cần gửi khi offline và gửi lại khi có mạng.
+- Hiển thị dữ liệu cache (nếu có) để giảm gián đoạn; cung cấp nút "Thử lại" và tự động retry với backoff.
+
+2) API errors
+
+- 5xx (Server error): Hiện thông báo chung "Server gặp sự cố, thử lại sau"; log chi tiết cho monitoring; retry có điều kiện (throttled exponential backoff).
+- 404 (Not Found): Không retry; hiển thị message cụ thể (ví dụ "Sản phẩm không tồn tại").
+- 429 (Too Many Requests): Đọc header `Retry-After` nếu có, hoặc áp backoff; giảm tốc độ gọi (client-side rate limiting).
+
+3) Timeout (> 10s)
+
+- Dùng AbortController để timeout request và cho người dùng biết là request đã timeout.
+- Ví dụ hàm `fetchWithTimeout(url, ms)`:
+
+```javascript
+async function fetchWithTimeout(url, options = {}, ms = 10000) {
+  const controller = new AbortController();
+  const id = setTimeout(() => controller.abort(), ms);
+  try {
+    const res = await fetch(url, { ...options, signal: controller.signal });
+    clearTimeout(id);
+    return res;
+  } catch (err) {
+    clearTimeout(id);
+    // err.name === 'AbortError' khi timeout
+    throw err;
+  }
+}
+```
+
+Giải thích: `AbortController` cho phép huỷ fetch khi quá thời gian; bắt `AbortError` để phân biệt timeout với lỗi mạng khác.
+
+4) Retry logic (thử lại 3 lần nếu lỗi network)
+
+- Chỉ retry cho lỗi tạm thời: network failures (`TypeError` / `AbortError`) hoặc 5xx theo chính sách.
+- Dùng exponential backoff (ví dụ base 500ms → 500, 1000, 2000ms).
+
+Ví dụ `fetchWithRetry`:
+
+```javascript
+function delay(ms) { return new Promise(res => setTimeout(res, ms)); }
+
+async function fetchWithRetry(url, options = {}, maxRetries = 3, timeout = 10000, backoff = 500) {
+  for (let attempt = 0; attempt <= maxRetries; attempt++) {
+    try {
+      const res = await fetchWithTimeout(url, options, timeout);
+
+      // Nếu response trả về lỗi phía server, có thể quyết định retry cho 5xx
+      if (!res.ok) {
+        if (res.status >= 500 && res.status < 600 && attempt < maxRetries) {
+          await delay(backoff * Math.pow(2, attempt));
+          continue; // thử lại
+        }
+        // Không retry cho 4xx (trừ 429 xử lý riêng)
+        throw new Error(`HTTP ${res.status}`);
+      }
+
+      return await res.json();
+    } catch (err) {
+      const isNetworkError = err.name === 'TypeError' || err.name === 'AbortError';
+      // Nếu là lỗi mạng hoặc timeout thì retry, nếu đã hết lần thử thì ném lỗi
+      if (!isNetworkError || attempt === maxRetries) {
+        throw err;
+      }
+      // backoff trước khi thử lại
+      await delay(backoff * Math.pow(2, attempt));
+    }
+  }
+}
+```
+
+Sử dụng:
+
+```javascript
+try {
+  const data = await fetchWithRetry('https://api.example.com/data');
+  // xử lý data
+} catch (err) {
+  // hiển thị lỗi phù hợp với người dùng
+}
+```
+
