@@ -1,6 +1,6 @@
 # Component Tree
 
-
+```text
 App
 ├── Navbar
 │   ├── logo
@@ -112,4 +112,4 @@ App
 * Dễ bảo trì và cập nhật.
 
 ```
-
+```
