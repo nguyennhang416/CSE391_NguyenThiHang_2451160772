@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weather App</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="page-shell">
+    <section class="panel">
+      <header class="panel-header">
+        <div>
+          <h1>Weather App</h1>
+          <p>Nhập tên thành phố và nhấn Tìm để xem thời tiết hiện tại.</p>
+        </div>
+      </header>
+
+      <form id="weather-form" class="search-form">
+        <label class="field-group">
+          <span class="label-text">Thành phố</span>
+          <input id="city-input" type="text" placeholder="Hà Nội, London, Tokyo..." required>
+        </label>
+        <button id="search-button" type="submit">Tìm</button>
+      </form>
+
+      <div id="status" class="status"></div>
+
+      <section id="weather-card" class="weather-card hidden">
+        <div class="weather-card-top">
+          <div>
+            <p class="card-label">Thành phố</p>
+            <h2 id="city-name"></h2>
+            <p id="description" class="subtitle"></p>
+          </div>
+          <div id="weather-icon" class="weather-icon"></div>
+        </div>
+
+        <div class="weather-grid">
+          <div class="weather-item">
+            <span>Nhiệt độ</span>
+            <strong id="temperature"></strong>
+          </div>
+          <div class="weather-item">
+            <span>Độ ẩm</span>
+            <strong id="humidity"></strong>
+          </div>
+          <div class="weather-item">
+            <span>Gió</span>
+            <strong id="wind"></strong>
+          </div>
+        </div>
+      </section>
+
+      <section class="history-panel">
+        <div class="history-header">
+          <h3>Lịch sử tìm kiếm</h3>
+          <p>(Tối đa 5 thành phố)</p>
+        </div>
+        <ul id="history-list" class="history-list"></ul>
+      </section>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
