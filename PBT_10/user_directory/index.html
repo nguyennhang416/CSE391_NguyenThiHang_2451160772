@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Directory</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="app-header">
+      <div>
+        <h1>User Directory</h1>
+        <p>CRUD user với JSONPlaceholder API. Search, edit, delete và tạo mới user.</p>
+      </div>
+      <button id="new-user-button" class="primary-button">Thêm user mới</button>
+    </header>
+
+    <section id="message" class="message hidden"></section>
+
+    <section id="loading" class="loader hidden">Đang tải dữ liệu...</section>
+
+    <section class="content-grid">
+      <section class="list-panel">
+        <div class="panel-header">
+          <label class="search-field">
+            <span>Tìm kiếm</span>
+            <input id="search-input" type="search" placeholder="Tìm theo tên hoặc email...">
+          </label>
+        </div>
+        <div id="user-list" class="user-list"></div>
+      </section>
+
+      <aside id="user-form-panel" class="form-panel hidden">
+        <h2 id="form-title">Thêm người dùng</h2>
+        <form id="user-form">
+          <label>
+            Name
+            <input id="name" type="text" required>
+          </label>
+          <label>
+            Email
+            <input id="email" type="email" required>
+          </label>
+          <label>
+            Phone
+            <input id="phone" type="text">
+          </label>
+          <label>
+            Website
+            <input id="website" type="text">
+          </label>
+          <div class="form-actions">
+            <button type="submit" class="primary-button">Lưu</button>
+            <button type="button" id="cancel-button" class="secondary-button">Hủy</button>
+          </div>
+        </form>
+      </aside>
+    </section>
+  </div>
+
+  <script src="api.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
