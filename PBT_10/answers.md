@@ -85,3 +85,58 @@ async function getData() {
 - `catch` cũng bắt lỗi do `fetch` bị từ chối (ví dụ CORS, timeout nếu được cấu hình).
 - Không tự động bắt `404`, vì `fetch` vẫn trả về `Response` thành công về mặt mạng; phần `if (!response.ok)` đóng vai trò chuyển 404/500 thành lỗi.
 - `catch` cũng bắt được lỗi parse JSON nếu response không phải JSON hợp lệ.
+
+## A3 — Promise States
+
+### Sơ đồ trạng thái Promise
+
+- `Pending` → `Fulfilled`
+- `Pending` → `Rejected`
+
+`Pending` là trạng thái ban đầu khi một Promise vừa được tạo và vẫn đang chờ xử lý.
+Khi thao tác thành công, Promise chuyển sang `Fulfilled` và trả về giá trị.
+Nếu có lỗi xảy ra, Promise chuyển sang `Rejected` và trả về lý do lỗi.
+
+### Callback Hell là gì?
+
+Callback Hell xảy ra khi code sử dụng nhiều callback lồng nhau, khiến cấu trúc mã bị thụt sâu, khó đọc và khó bảo trì.
+
+Ví dụ callback hell 4 cấp:
+
+```javascript
+loginUser(user, function(error, userData) {
+  if (error) return handleError(error);
+  getProfile(userData.id, function(error, profile) {
+    if (error) return handleError(error);
+    getPosts(profile.id, function(error, posts) {
+      if (error) return handleError(error);
+      getComments(posts[0].id, function(error, comments) {
+        if (error) return handleError(error);
+        console.log(comments);
+      });
+    });
+  });
+});
+```
+
+### Refactor thành async/await
+
+```javascript
+async function loadUserComments(user) {
+  try {
+    const userData = await loginUser(user);
+    const profile = await getProfile(userData.id);
+    const posts = await getPosts(profile.id);
+    const comments = await getComments(posts[0].id);
+    console.log(comments);
+  } catch (error) {
+    handleError(error);
+  }
+}
+```
+
+### Giải thích
+
+- `async/await` giúp viết code bất đồng bộ trông giống như code đồng bộ, tránh lồng callback sâu.
+- Promise chuyển trạng thái từ `Pending` sang `Fulfilled` khi thực hiện thành công, hoặc `Rejected` khi gặp lỗi.
+- `try...catch` trong `async` bắt lỗi giống như xử lý trong hàm đồng bộ.
