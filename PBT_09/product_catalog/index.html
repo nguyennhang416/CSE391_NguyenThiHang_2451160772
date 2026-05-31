@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Catalog</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <div class="header-top">
+      <div>
+        <h1>Danh mục sản phẩm</h1>
+        <p>Chọn sản phẩm, tìm kiếm và thêm vào giỏ hàng nhanh chóng.</p>
+      </div>
+      <div id="cartBadge" class="cart-badge" aria-label="Giỏ hàng">
+        <span class="cart-icon">🛒</span>
+        <span>Giỏ hàng:</span>
+        <span id="cartCount">0</span>
+      </div>
+    </div>
+    <div class="controls">
+      <input id="searchInput" type="text" placeholder="Tìm sản phẩm...">
+      <select id="sortSelect">
+        <option value="price-asc">Giá: thấp đến cao</option>
+        <option value="price-desc">Giá: cao đến thấp</option>
+        <option value="name-asc">Tên A-Z</option>
+        <option value="rating-desc">Đánh giá cao nhất</option>
+      </select>
+      <button id="darkModeBtn">Chế độ tối</button>
+    </div>
+    <div class="categories" id="categoryButtons"></div>
+  </header>
+  <main>
+    <div id="productGrid"></div>
+  </main>
+  <div id="modal" class="hidden">
+    <div class="modal-content">
+      <button id="closeModal">×</button>
+      <div id="modalBody"></div>
+    </div>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
