@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Keyboard App</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-container">
+    <h1>Keyboard Navigation App</h1>
+    <p class="instructions">Dùng phím ← → để chuyển ảnh, phím 1-9 để chọn trực tiếp và Ctrl+K để mở Command Palette.</p>
+    <section class="gallery">
+      <div id="imageDisplay">Image 1</div>
+      <div class="gallery-controls">
+        <button id="prevBtn" aria-label="Previous image">←</button>
+        <button id="nextBtn" aria-label="Next image">→</button>
+      </div>
+      <div id="galleryInfo">Nhấn phím trái/phải hoặc 1-9</div>
+    </section>
+    <section class="palette">
+      <button id="openPalette">Mở Command Palette (Ctrl+K)</button>
+      <div id="paletteOverlay" class="hidden" role="dialog" aria-modal="true">
+        <input id="commandInput" placeholder="Nhập lệnh..." aria-label="Command input">
+        <ul id="commandList"></ul>
+      </div>
+    </section>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
