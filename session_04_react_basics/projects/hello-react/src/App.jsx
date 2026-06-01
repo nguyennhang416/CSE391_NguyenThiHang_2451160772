@@ -7,6 +7,17 @@ import ProductInfo from "./components/ProductInfo";
 import SimpleVariables from "./components/SimpleVariables";
 import ConditionalRendering from "./components/ConditionalRendering";
 import ListRendering from "./components/ListRendering";
+// Tier 3
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+import ProductCard from "./components/ProductCard";
+import UserCard from "./components/UserCard";
+import PriceTag from "./components/PriceTag";
+// Tier 4
+import NumberState from "./components/NumberState";
+import StringState from "./components/StringState";
+import BooleanState from "./components/BooleanState";
+import MultipleStates from "./components/MultipleStates";
 
 
 const products = [
@@ -45,6 +56,44 @@ function App() {
       <hr />
       <h2>Bài 2.3 — Render danh sách</h2>
       <ListRendering />
+      {/* ===== TIER 3 ===== */}
+      <h1 style={{ marginTop: "40px" }}>Tier 3 — Chia Component</h1>
+      <Header />
+      <hr />
+      <h2>Bài 3.2 — ProductCard</h2>
+      <div style={{ display: "flex", flexWrap: "wrap" }}>
+        {products.map((product) => (
+          <ProductCard key={product.id} name={product.name} price={product.price} image={product.image} />
+        ))}
+      </div>
+      <hr />
+      <h2>Bài 3.3 — UserCard</h2>
+      <div style={{ display: "flex", flexWrap: "wrap" }}>
+        {users.map((user) => (
+          <UserCard key={user.id} name={user.name} email={user.email} avatar={user.avatar} />
+        ))}
+      </div>
+      <hr />
+      <h2>Bài 3.3 — PriceTag</h2>
+      <PriceTag originalPrice={25000000} salePrice={19990000} />
+      <PriceTag originalPrice={1500000} salePrice={990000} />
+      <PriceTag originalPrice={500000} salePrice={350000} />
+      <Footer />
+
+      {/* ===== TIER 4 ===== */}
+      <h1 style={{ marginTop: "40px" }}>Tier 4 — useState cơ bản</h1>
+      <hr />
+      <h2>Bài 4.1 — useState với số</h2>
+      <NumberState />
+      <hr />
+      <h2>Bài 4.2 — useState với chuỗi</h2>
+      <StringState />
+      <hr />
+      <h2>Bài 4.3 — useState với boolean</h2>
+      <BooleanState />
+      <hr />
+      <h2>Bài 4.4 — Nhiều useState</h2>
+      <MultipleStates />
 
 
      
