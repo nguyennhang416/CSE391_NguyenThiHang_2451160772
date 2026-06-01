@@ -18,7 +18,11 @@ import NumberState from "./components/NumberState";
 import StringState from "./components/StringState";
 import BooleanState from "./components/BooleanState";
 import MultipleStates from "./components/MultipleStates";
-
+// Tier 5
+import ClickEvents from "./components/ClickEvents";
+import InputEvents from "./components/InputEvents";
+import KeyboardEvents from "./components/KeyboardEvents";
+import FormEvents from "./components/FormEvents";
 
 const products = [
   { id: 1, name: "iPhone 15", price: "25.000.000", image: "https://placehold.co/200x150" },
@@ -94,6 +98,21 @@ function App() {
       <hr />
       <h2>Bài 4.4 — Nhiều useState</h2>
       <MultipleStates />
+
+       {/* ===== TIER 5 ===== */}
+      <h1 style={{ marginTop: "40px" }}>Tier 5 — Events cơ bản</h1>
+      <hr />
+      <h2>Bài 5.1 — Click Events</h2>
+      <ClickEvents />
+      <hr />
+      <h2>Bài 5.2 — Input Events</h2>
+      <InputEvents />
+      <hr />
+      <h2>Bài 5.3 — Keyboard Events</h2>
+      <KeyboardEvents />
+      <hr />
+      <h2>Bài 5.4 — Form Events</h2>
+      <FormEvents />
 
 
      
