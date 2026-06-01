@@ -1,0 +1,38 @@
+import "./App.css";
+
+// Tier 0
+import UserProfile from "./components/UserProfile";
+import ProductInfo from "./components/ProductInfo";
+
+
+const products = [
+  { id: 1, name: "iPhone 15", price: "25.000.000", image: "https://placehold.co/200x150" },
+  { id: 2, name: "Samsung S24", price: "22.000.000", image: "https://placehold.co/200x150" },
+  { id: 3, name: "Xiaomi 14", price: "15.000.000", image: "https://placehold.co/200x150" },
+];
+
+const users = [
+  { id: 1, name: "Nguyễn Văn Minh", email: "minh@example.com", avatar: "https://placehold.co/80" },
+  { id: 2, name: "Trần Thị An", email: "an@example.com", avatar: "https://placehold.co/80" },
+  { id: 3, name: "Lê Văn Linh", email: "linh@example.com", avatar: "https://placehold.co/80" },
+];
+
+function App() {
+  return (
+    <div style={{ padding: "20px", fontFamily: "Arial, sans-serif" }}>
+      {/* ===== TIER 0 ===== */}
+      <h1>Tier 0 — Demo các component</h1>
+      <hr />
+      <h2>Bài 1: UserProfile</h2>
+      <UserProfile />
+      <hr />
+      <h2>Bài 2: ProductInfo</h2>
+      <ProductInfo />
+
+
+     
+    </div>
+  );
+}
+
+export default App;
