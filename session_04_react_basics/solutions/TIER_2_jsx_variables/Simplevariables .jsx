@@ -1,6 +1,6 @@
 function SimpleVariables() {
   // Thử thách 1: Thông tin cá nhân
-  const ten = "Đặng Nguyên Trường";
+  const ten = "Nguyễn Thị Hằng";
   const tuoi = 21;
   const queQuan = "Hà Nội";
 
